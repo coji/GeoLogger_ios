@@ -1,0 +1,433 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E358AB3C1B7C9E7A00A8BF77 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E358AB3B1B7C9E7A00A8BF77 /* main.m */; };
+		E358AB3F1B7C9E7A00A8BF77 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E358AB3E1B7C9E7A00A8BF77 /* AppDelegate.m */; };
+		E358AB421B7C9E7A00A8BF77 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E358AB411B7C9E7A00A8BF77 /* ViewController.m */; };
+		E358AB451B7C9E7A00A8BF77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E358AB431B7C9E7A00A8BF77 /* Main.storyboard */; };
+		E358AB471B7C9E7A00A8BF77 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E358AB461B7C9E7A00A8BF77 /* Images.xcassets */; };
+		E358AB4A1B7C9E7A00A8BF77 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E358AB481B7C9E7A00A8BF77 /* LaunchScreen.xib */; };
+		E358AB561B7C9E7A00A8BF77 /* GeoLoggerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E358AB551B7C9E7A00A8BF77 /* GeoLoggerTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E358AB501B7C9E7A00A8BF77 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E358AB2E1B7C9E7A00A8BF77 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E358AB351B7C9E7A00A8BF77;
+			remoteInfo = GeoLogger;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E358AB361B7C9E7A00A8BF77 /* GeoLogger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoLogger.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E358AB3A1B7C9E7A00A8BF77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E358AB3B1B7C9E7A00A8BF77 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E358AB3D1B7C9E7A00A8BF77 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E358AB3E1B7C9E7A00A8BF77 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E358AB401B7C9E7A00A8BF77 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		E358AB411B7C9E7A00A8BF77 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E358AB441B7C9E7A00A8BF77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E358AB461B7C9E7A00A8BF77 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E358AB491B7C9E7A00A8BF77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		E358AB4F1B7C9E7A00A8BF77 /* GeoLoggerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoLoggerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E358AB541B7C9E7A00A8BF77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E358AB551B7C9E7A00A8BF77 /* GeoLoggerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GeoLoggerTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E358AB331B7C9E7A00A8BF77 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E358AB4C1B7C9E7A00A8BF77 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E358AB2D1B7C9E7A00A8BF77 = {
+			isa = PBXGroup;
+			children = (
+				E358AB381B7C9E7A00A8BF77 /* GeoLogger */,
+				E358AB521B7C9E7A00A8BF77 /* GeoLoggerTests */,
+				E358AB371B7C9E7A00A8BF77 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E358AB371B7C9E7A00A8BF77 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E358AB361B7C9E7A00A8BF77 /* GeoLogger.app */,
+				E358AB4F1B7C9E7A00A8BF77 /* GeoLoggerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E358AB381B7C9E7A00A8BF77 /* GeoLogger */ = {
+			isa = PBXGroup;
+			children = (
+				E358AB3D1B7C9E7A00A8BF77 /* AppDelegate.h */,
+				E358AB3E1B7C9E7A00A8BF77 /* AppDelegate.m */,
+				E358AB401B7C9E7A00A8BF77 /* ViewController.h */,
+				E358AB411B7C9E7A00A8BF77 /* ViewController.m */,
+				E358AB431B7C9E7A00A8BF77 /* Main.storyboard */,
+				E358AB461B7C9E7A00A8BF77 /* Images.xcassets */,
+				E358AB481B7C9E7A00A8BF77 /* LaunchScreen.xib */,
+				E358AB391B7C9E7A00A8BF77 /* Supporting Files */,
+			);
+			path = GeoLogger;
+			sourceTree = "<group>";
+		};
+		E358AB391B7C9E7A00A8BF77 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E358AB3A1B7C9E7A00A8BF77 /* Info.plist */,
+				E358AB3B1B7C9E7A00A8BF77 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E358AB521B7C9E7A00A8BF77 /* GeoLoggerTests */ = {
+			isa = PBXGroup;
+			children = (
+				E358AB551B7C9E7A00A8BF77 /* GeoLoggerTests.m */,
+				E358AB531B7C9E7A00A8BF77 /* Supporting Files */,
+			);
+			path = GeoLoggerTests;
+			sourceTree = "<group>";
+		};
+		E358AB531B7C9E7A00A8BF77 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E358AB541B7C9E7A00A8BF77 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E358AB351B7C9E7A00A8BF77 /* GeoLogger */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E358AB591B7C9E7A00A8BF77 /* Build configuration list for PBXNativeTarget "GeoLogger" */;
+			buildPhases = (
+				E358AB321B7C9E7A00A8BF77 /* Sources */,
+				E358AB331B7C9E7A00A8BF77 /* Frameworks */,
+				E358AB341B7C9E7A00A8BF77 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GeoLogger;
+			productName = GeoLogger;
+			productReference = E358AB361B7C9E7A00A8BF77 /* GeoLogger.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E358AB4E1B7C9E7A00A8BF77 /* GeoLoggerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E358AB5C1B7C9E7A00A8BF77 /* Build configuration list for PBXNativeTarget "GeoLoggerTests" */;
+			buildPhases = (
+				E358AB4B1B7C9E7A00A8BF77 /* Sources */,
+				E358AB4C1B7C9E7A00A8BF77 /* Frameworks */,
+				E358AB4D1B7C9E7A00A8BF77 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E358AB511B7C9E7A00A8BF77 /* PBXTargetDependency */,
+			);
+			name = GeoLoggerTests;
+			productName = GeoLoggerTests;
+			productReference = E358AB4F1B7C9E7A00A8BF77 /* GeoLoggerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E358AB2E1B7C9E7A00A8BF77 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = "Coji Mizoguchi";
+				TargetAttributes = {
+					E358AB351B7C9E7A00A8BF77 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					E358AB4E1B7C9E7A00A8BF77 = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = E358AB351B7C9E7A00A8BF77;
+					};
+				};
+			};
+			buildConfigurationList = E358AB311B7C9E7A00A8BF77 /* Build configuration list for PBXProject "GeoLogger" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E358AB2D1B7C9E7A00A8BF77;
+			productRefGroup = E358AB371B7C9E7A00A8BF77 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E358AB351B7C9E7A00A8BF77 /* GeoLogger */,
+				E358AB4E1B7C9E7A00A8BF77 /* GeoLoggerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E358AB341B7C9E7A00A8BF77 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E358AB451B7C9E7A00A8BF77 /* Main.storyboard in Resources */,
+				E358AB4A1B7C9E7A00A8BF77 /* LaunchScreen.xib in Resources */,
+				E358AB471B7C9E7A00A8BF77 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E358AB4D1B7C9E7A00A8BF77 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E358AB321B7C9E7A00A8BF77 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E358AB421B7C9E7A00A8BF77 /* ViewController.m in Sources */,
+				E358AB3F1B7C9E7A00A8BF77 /* AppDelegate.m in Sources */,
+				E358AB3C1B7C9E7A00A8BF77 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E358AB4B1B7C9E7A00A8BF77 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E358AB561B7C9E7A00A8BF77 /* GeoLoggerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E358AB511B7C9E7A00A8BF77 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E358AB351B7C9E7A00A8BF77 /* GeoLogger */;
+			targetProxy = E358AB501B7C9E7A00A8BF77 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E358AB431B7C9E7A00A8BF77 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E358AB441B7C9E7A00A8BF77 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E358AB481B7C9E7A00A8BF77 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E358AB491B7C9E7A00A8BF77 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E358AB571B7C9E7A00A8BF77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E358AB581B7C9E7A00A8BF77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E358AB5A1B7C9E7A00A8BF77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = GeoLogger/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E358AB5B1B7C9E7A00A8BF77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = GeoLogger/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		E358AB5D1B7C9E7A00A8BF77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = GeoLoggerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeoLogger.app/GeoLogger";
+			};
+			name = Debug;
+		};
+		E358AB5E1B7C9E7A00A8BF77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = GeoLoggerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeoLogger.app/GeoLogger";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E358AB311B7C9E7A00A8BF77 /* Build configuration list for PBXProject "GeoLogger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E358AB571B7C9E7A00A8BF77 /* Debug */,
+				E358AB581B7C9E7A00A8BF77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E358AB591B7C9E7A00A8BF77 /* Build configuration list for PBXNativeTarget "GeoLogger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E358AB5A1B7C9E7A00A8BF77 /* Debug */,
+				E358AB5B1B7C9E7A00A8BF77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E358AB5C1B7C9E7A00A8BF77 /* Build configuration list for PBXNativeTarget "GeoLoggerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E358AB5D1B7C9E7A00A8BF77 /* Debug */,
+				E358AB5E1B7C9E7A00A8BF77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E358AB2E1B7C9E7A00A8BF77 /* Project object */;
+}
