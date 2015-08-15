@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "GeoLoggerAnnotation.h"
 
 @interface ViewController : UIViewController<MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -18,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIButton *btnReset;
 
-- (void)addTableItem:(CLLocationCoordinate2D)coordinate timestamp:(NSDate *)date message:(NSString *)message;
+- (void)addTableItem:(GeoLoggerAnnotation *)tt;
 - (void)addLocation:(CLLocation*)location;
 - (void)addVisit:(CLVisit *)visit;
 

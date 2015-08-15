@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
-#import "GeoLoggerAnnotation.h"
 
 @interface ViewController ()
 
@@ -39,27 +38,21 @@
         }
         self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
         self.locationManager.distanceFilter = kCLDistanceFilterNone;
-        //self.locationManager.distanceFilter = 0;                    //100m 移動ごとに通知
-        //[self.locationManager startUpdatingLocation];
+        // [self.locationManager startUpdatingLocation];
         [self.locationManager startMonitoringSignificantLocationChanges];
         [self.locationManager startMonitoringVisits];
     }
 }
 
-- (void)addTableItem:(CLLocationCoordinate2D)coordinate
-        timestamp:(NSDate *)date
-        message:(NSString *)message
+- (void)addTableItem:(GeoLoggerAnnotation *)tt
 {
     NSMutableArray *geo_locations = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).geo_locations;
 
-    GeoLoggerAnnotation* tt = [[GeoLoggerAnnotation alloc] init];
-    tt.coordinate = coordinate;
-    tt.title = message;
     [self.mapView addAnnotation:tt];
     
     // 地図の移動&ズーム
     MKCoordinateSpan coordinateSpan = MKCoordinateSpanMake(0.0001, 0.0001);
-    MKCoordinateRegion newRegion = MKCoordinateRegionMake(coordinate, coordinateSpan);
+    MKCoordinateRegion newRegion = MKCoordinateRegionMake(tt.coordinate, coordinateSpan);
     [self.mapView setRegion:newRegion animated:YES];
 
     // データの追加 / 保存
@@ -86,7 +79,16 @@
     NSString *accuracy = [NSString stringWithFormat:@"%0.0f", location.horizontalAccuracy];
     NSString *message = [[NSString alloc] initWithFormat:@"%lu: %@ (精度:%@m)", (unsigned long)geo_locations.count+1, timestamp, accuracy];
     
-    [self addTableItem:location.coordinate timestamp:location.timestamp message:message];
+    GeoLoggerAnnotation* tt = [[GeoLoggerAnnotation alloc] init];
+    tt.coordinate = location.coordinate;
+    tt.title = message;
+    tt.is_visit = FALSE;
+    tt.timestamp = location.timestamp;
+    tt.accuracy = location.horizontalAccuracy;
+    tt.arrival_date = nil;
+    tt.departure_date = nil;
+    
+    [self addTableItem:tt];
 }
 
 - (void)addVisit:(CLVisit *)visit
@@ -100,7 +102,15 @@
     NSString *accuracy = [NSString stringWithFormat:@"%0.0f", visit.horizontalAccuracy];
     NSString *message = [[NSString alloc] initWithFormat:@"%lu: %@ (精度:%@m) visit", (unsigned long)geo_locations.count+1, timestamp, accuracy];
     
-    [self addTableItem:visit.coordinate timestamp:[NSDate date] message:message];
+    GeoLoggerAnnotation* tt = [[GeoLoggerAnnotation alloc] init];
+    tt.coordinate = visit.coordinate;
+    tt.title = message;
+    tt.is_visit = FALSE;
+    tt.timestamp = [NSDate date];
+    tt.arrival_date = visit.arrivalDate;
+    tt.departure_date = visit.departureDate;
+    
+    [self addTableItem:tt];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
@@ -124,7 +134,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSMutableArray *geo_locations = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).geo_locations;
-    NSString *str = [NSString stringWithFormat:@"%ld", indexPath.row];
+    NSString *str = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
     // 再利用できるセルがあれば再利用する
     UITableViewCell *cell;// = [tableView dequeueReusableCellWithIdentifier:str];
     
