@@ -7,9 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource>
 
+@property (nonatomic) CLLocationManager *locationManager;
+
+@property (weak, nonatomic) IBOutlet UITableView *tblList;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UIButton *btnReset;
+
+- (void)addTableItem:(CLLocationCoordinate2D)coordinate timestamp:(NSDate *)date message:(NSString *)message;
+- (void)addLocation:(CLLocation*)location;
+- (void)addVisit:(CLVisit *)visit;
 
 @end
 

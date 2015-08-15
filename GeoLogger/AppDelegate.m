@@ -16,8 +16,23 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"geo_locations.dat"];
+
+    self.geo_locations = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    if(self.geo_locations == nil) {
+        self.geo_locations = [[NSMutableArray alloc] init];
+    }
     return YES;
+}
+
+- (void)save_geo_locations
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"geo_locations.dat"];
+    
+    [NSKeyedArchiver archiveRootObject:self.geo_locations toFile:path];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

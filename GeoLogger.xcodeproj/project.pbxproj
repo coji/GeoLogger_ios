@@ -14,6 +14,9 @@
 		E358AB471B7C9E7A00A8BF77 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E358AB461B7C9E7A00A8BF77 /* Images.xcassets */; };
 		E358AB4A1B7C9E7A00A8BF77 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E358AB481B7C9E7A00A8BF77 /* LaunchScreen.xib */; };
 		E358AB561B7C9E7A00A8BF77 /* GeoLoggerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E358AB551B7C9E7A00A8BF77 /* GeoLoggerTests.m */; };
+		E358AB601B7C9F3C00A8BF77 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E358AB5F1B7C9F3C00A8BF77 /* CoreLocation.framework */; };
+		E358AB621B7C9F4400A8BF77 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E358AB611B7C9F4400A8BF77 /* MapKit.framework */; };
+		E35DBFAB1B7E3E9F00C6929C /* GeoLoggerAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E35DBFAA1B7E3E9F00C6929C /* GeoLoggerAnnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,10 @@
 		E358AB4F1B7C9E7A00A8BF77 /* GeoLoggerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoLoggerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E358AB541B7C9E7A00A8BF77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E358AB551B7C9E7A00A8BF77 /* GeoLoggerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GeoLoggerTests.m; sourceTree = "<group>"; };
+		E358AB5F1B7C9F3C00A8BF77 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		E358AB611B7C9F4400A8BF77 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		E35DBFA91B7E3E9F00C6929C /* GeoLoggerAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoLoggerAnnotation.h; sourceTree = "<group>"; };
+		E35DBFAA1B7E3E9F00C6929C /* GeoLoggerAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoLoggerAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +54,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E358AB621B7C9F4400A8BF77 /* MapKit.framework in Frameworks */,
+				E358AB601B7C9F3C00A8BF77 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +72,8 @@
 		E358AB2D1B7C9E7A00A8BF77 = {
 			isa = PBXGroup;
 			children = (
+				E358AB611B7C9F4400A8BF77 /* MapKit.framework */,
+				E358AB5F1B7C9F3C00A8BF77 /* CoreLocation.framework */,
 				E358AB381B7C9E7A00A8BF77 /* GeoLogger */,
 				E358AB521B7C9E7A00A8BF77 /* GeoLoggerTests */,
 				E358AB371B7C9E7A00A8BF77 /* Products */,
@@ -89,6 +100,8 @@
 				E358AB461B7C9E7A00A8BF77 /* Images.xcassets */,
 				E358AB481B7C9E7A00A8BF77 /* LaunchScreen.xib */,
 				E358AB391B7C9E7A00A8BF77 /* Supporting Files */,
+				E35DBFA91B7E3E9F00C6929C /* GeoLoggerAnnotation.h */,
+				E35DBFAA1B7E3E9F00C6929C /* GeoLoggerAnnotation.m */,
 			);
 			path = GeoLogger;
 			sourceTree = "<group>";
@@ -168,6 +181,11 @@
 				TargetAttributes = {
 					E358AB351B7C9E7A00A8BF77 = {
 						CreatedOnToolsVersion = 6.4;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
 					};
 					E358AB4E1B7C9E7A00A8BF77 = {
 						CreatedOnToolsVersion = 6.4;
@@ -221,6 +239,7 @@
 			files = (
 				E358AB421B7C9E7A00A8BF77 /* ViewController.m in Sources */,
 				E358AB3F1B7C9E7A00A8BF77 /* AppDelegate.m in Sources */,
+				E35DBFAB1B7E3E9F00C6929C /* GeoLoggerAnnotation.m in Sources */,
 				E358AB3C1B7C9E7A00A8BF77 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,6 +437,7 @@
 				E358AB5B1B7C9E7A00A8BF77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E358AB5C1B7C9E7A00A8BF77 /* Build configuration list for PBXNativeTarget "GeoLoggerTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +446,7 @@
 				E358AB5E1B7C9E7A00A8BF77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
