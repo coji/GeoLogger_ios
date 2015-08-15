@@ -24,6 +24,7 @@
     CLLocationCoordinate2D cd;
     cd.latitude = [coder decodeDoubleForKey:@"latitude"];
     cd.longitude = [coder decodeDoubleForKey:@"longitude"];
+    self.coordinate = cd;
     self.title = [coder decodeObjectForKey:@"title"];
     self.sample = [coder decodeObjectForKey:@"sample"];
     

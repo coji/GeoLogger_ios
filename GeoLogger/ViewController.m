@@ -38,8 +38,8 @@
             [self.locationManager requestAlwaysAuthorization];
         }
         self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+        self.locationManager.distanceFilter = kCLDistanceFilterNone;
         //self.locationManager.distanceFilter = 0;                    //100m 移動ごとに通知
-        //self.locationManager.distanceFilter = kCLDistanceFilterNone;    //全ての動きを通知（デフォルト）
         //[self.locationManager startUpdatingLocation];
         [self.locationManager startMonitoringSignificantLocationChanges];
         [self.locationManager startMonitoringVisits];
@@ -58,7 +58,7 @@
     [self.mapView addAnnotation:tt];
     
     // 地図の移動&ズーム
-    MKCoordinateSpan coordinateSpan = MKCoordinateSpanMake(0.001, 0.001);
+    MKCoordinateSpan coordinateSpan = MKCoordinateSpanMake(0.0001, 0.0001);
     MKCoordinateRegion newRegion = MKCoordinateRegionMake(coordinate, coordinateSpan);
     [self.mapView setRegion:newRegion animated:YES];
 
@@ -84,7 +84,7 @@
     
     NSString *timestamp = [outputFormatter stringFromDate:location.timestamp];
     NSString *accuracy = [NSString stringWithFormat:@"%0.0f", location.horizontalAccuracy];
-    NSString *message = [[NSString alloc] initWithFormat:@"%lu: %@ (精度:%@)", (unsigned long)geo_locations.count+1, timestamp, accuracy];
+    NSString *message = [[NSString alloc] initWithFormat:@"%lu: %@ (精度:%@m)", (unsigned long)geo_locations.count+1, timestamp, accuracy];
     
     [self addTableItem:location.coordinate timestamp:location.timestamp message:message];
 }
@@ -98,15 +98,15 @@
     
     NSString *timestamp = [outputFormatter stringFromDate:[NSDate date]];
     NSString *accuracy = [NSString stringWithFormat:@"%0.0f", visit.horizontalAccuracy];
-    NSString *message = [[NSString alloc] initWithFormat:@"%lu: %@ (精度:%@)", (unsigned long)geo_locations.count+1, timestamp, accuracy];
+    NSString *message = [[NSString alloc] initWithFormat:@"%lu: %@ (精度:%@m) visit", (unsigned long)geo_locations.count+1, timestamp, accuracy];
     
     [self addTableItem:visit.coordinate timestamp:[NSDate date] message:message];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    for(id location in locations) {
-        [self addLocation:location];
+    for(CLLocation *loc in locations) {
+        [self addLocation: loc];
     }
 }
 
@@ -143,12 +143,18 @@
     NSMutableArray *geo_locations = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).geo_locations;
     
     GeoLoggerAnnotation* tt = geo_locations[indexPath.row];
-    MKCoordinateSpan coordinateSpan = MKCoordinateSpanMake(0.001, 0.001); //数が小さいほど拡大率アップ
+    MKCoordinateSpan coordinateSpan = MKCoordinateSpanMake(0.00001, 0.00001); //数が小さいほど拡大率アップ
 
     MKCoordinateRegion newRegion = MKCoordinateRegionMake(tt.coordinate, coordinateSpan);
     [self.mapView setRegion:newRegion animated:YES];
 }
+
 - (IBAction)btnResetTapped:(id)sender {
+    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    [delegate.geo_locations removeAllObjects];
+    [delegate save_geo_locations];
+
+    [self.tblList reloadData];
 }
 
 @end
