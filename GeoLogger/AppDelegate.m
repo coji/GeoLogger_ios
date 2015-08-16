@@ -17,6 +17,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    UIUserNotificationSettings *notificationSettings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert|UIUserNotificationTypeSound) categories:nil];
+    [[UIApplication sharedApplication]registerUserNotificationSettings:notificationSettings];
     
     //if ([launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]) {
         [GeoLocationService.sharedInstance startService];

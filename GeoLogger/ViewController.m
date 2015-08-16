@@ -28,6 +28,8 @@
 
 - (void)didAddedAnnotaition:(GeoLoggerAnnotation *) item;
 {
+    
+    // pin の追加
     [self.mapView addAnnotation:item];
     
     // 地図の移動&ズーム
@@ -36,12 +38,6 @@
     [self.mapView setRegion:newRegion animated:YES];
 
     // table view の更新
-    /*
-    [self.tblList beginUpdates];
-    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tblList insertRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:UITableViewRowAnimationTop];
-    [self.tblList endUpdates];
-     */
     [self.tblList reloadData];
 }
 
@@ -81,6 +77,7 @@
 }
 
 - (IBAction)btnResetTapped:(id)sender {
+    [self.mapView removeAnnotations:[[GeoLocationService sharedInstance] geo_locations]];
     [[GeoLocationService sharedInstance] clear];
     [self.tblList reloadData];
 }

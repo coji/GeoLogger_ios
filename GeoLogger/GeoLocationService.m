@@ -28,7 +28,8 @@
 {
     if(self = [super init])
     {
-        
+        self.locationManager = nil;
+        self.geo_locations = nil;
     }
     return self;
 }
@@ -50,7 +51,7 @@
         self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
         self.locationManager.distanceFilter = kCLDistanceFilterNone;
 
-        // [self.locationManager startUpdatingLocation];
+        //[self.locationManager startUpdatingLocation];
         [self.locationManager startMonitoringSignificantLocationChanges];
         [self.locationManager startMonitoringVisits];
     }
@@ -58,7 +59,7 @@
 
 - (void)stopService
 {
-    // [self.locationManager stopUpdatingLocation];
+    //[self.locationManager stopUpdatingLocation];
     [self.locationManager stopMonitoringSignificantLocationChanges];
     [self.locationManager stopMonitoringVisits];
 }
@@ -84,9 +85,17 @@
     [self.geo_locations insertObject:item atIndex:0];
     [self save];
 
-    if ([self.delegate respondsToSelector:@selector(didAddedAnnotaition:)]) {
+    if ([self.delegate respondsToSelector:@selector(didAddedAnnotaition:)])
+    {
         [self.delegate didAddedAnnotaition:item];
     }
+    
+    UILocalNotification *futureAlert;
+    futureAlert = [[UILocalNotification alloc] init];
+    [futureAlert setAlertBody:message];
+    futureAlert.fireDate = [NSDate dateWithTimeIntervalSinceNow:0];
+    futureAlert.timeZone = [NSTimeZone defaultTimeZone];
+    [[UIApplication sharedApplication] scheduleLocalNotification:futureAlert];
 }
 
 - (void)addVisit:(CLVisit *)visit
@@ -109,9 +118,17 @@
     [self.geo_locations insertObject:item atIndex:0];
     [self save];
 
-    if ([self.delegate respondsToSelector:@selector(didAddedAnnotaition:)]) {
+    if ([self.delegate respondsToSelector:@selector(didAddedAnnotaition:)])
+    {
         [self.delegate didAddedAnnotaition:item];
     }
+    
+    UILocalNotification *futureAlert;
+    futureAlert = [[UILocalNotification alloc] init];
+    [futureAlert setAlertBody:message];
+    futureAlert.fireDate = [NSDate dateWithTimeIntervalSinceNow:0];
+    futureAlert.timeZone = [NSTimeZone defaultTimeZone];
+    [[UIApplication sharedApplication] scheduleLocalNotification:futureAlert];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
