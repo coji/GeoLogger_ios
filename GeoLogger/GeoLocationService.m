@@ -11,6 +11,8 @@
 @implementation GeoLocationService
 @synthesize delegate;
 
+#define SERVER_URL_LOCATION @"http://techtalk.jp/geo_api.cgi?lat=%f&lng=%f&accuracy=%f"
+#define SERVER_URL_VISIT @"http://techtalk.jp/geo_api.cgi?lat=%f&lng=%f&accuracy=%f&arrival_date=%@&departure_date=%@"
 
 + (GeoLocationService*)sharedInstance
 {
@@ -96,6 +98,8 @@
     futureAlert.fireDate = [NSDate dateWithTimeIntervalSinceNow:0];
     futureAlert.timeZone = [NSTimeZone defaultTimeZone];
     [[UIApplication sharedApplication] scheduleLocalNotification:futureAlert];
+    
+    [self sendToServerWithLat:item.coordinate.latitude lng:item.coordinate.longitude accuracy:item.accuracy arrival_date:item.arrival_date departure_date:item.departure_date];
 }
 
 - (void)addVisit:(CLVisit *)visit
@@ -129,6 +133,8 @@
     futureAlert.fireDate = [NSDate dateWithTimeIntervalSinceNow:0];
     futureAlert.timeZone = [NSTimeZone defaultTimeZone];
     [[UIApplication sharedApplication] scheduleLocalNotification:futureAlert];
+
+    [self sendToServerWithLat:item.coordinate.latitude lng:item.coordinate.longitude accuracy:item.accuracy arrival_date:item.arrival_date departure_date:item.departure_date];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
@@ -167,6 +173,24 @@
     [self.geo_locations removeAllObjects];
     [self save];
 }
+
+- (void)sendToServerWithLat:(double)lat lng:(double)lng accuracy:(double)accuracy
+               arrival_date:(NSDate *)arrival_date departure_date:(NSDate *)departure_date
+{
+    NSString *url;
+    if(arrival_date && departure_date) {
+        url = [NSString stringWithFormat:SERVER_URL_VISIT, lat, lng, accuracy, arrival_date, departure_date];
+    } else {
+        url = [NSString stringWithFormat:SERVER_URL_LOCATION, lat, lng, accuracy];
+    }
+    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+
+    [NSURLConnection sendAsynchronousRequest:req
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                           }];
+}
+
 
 @end
 
