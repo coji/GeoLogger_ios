@@ -11,9 +11,6 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) NSMutableArray *geo_locations;
-
-- (void)save_geo_locations;
 
 @end
 

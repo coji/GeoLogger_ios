@@ -7,9 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import <CoreLocation/CoreLocation.h>
+#import "GeoLocationService.h"
 
 @interface AppDelegate ()
-
 @end
 
 @implementation AppDelegate
@@ -17,22 +18,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"geo_locations.dat"];
-
-    self.geo_locations = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-    if(self.geo_locations == nil) {
-        self.geo_locations = [[NSMutableArray alloc] init];
-    }
+    //if ([launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]) {
+        [GeoLocationService.sharedInstance startService];
+    //}
     return YES;
-}
-
-- (void)save_geo_locations
-{
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"geo_locations.dat"];
-    
-    [NSKeyedArchiver archiveRootObject:self.geo_locations toFile:path];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -19,121 +19,42 @@
     [super viewDidLoad];
 
     self.mapView.showsUserLocation = YES; //ユーザの位置を表示するかどうか
-
+    GeoLocationService.sharedInstance.delegate = self;
+    
     // 位置情報リスト
     self.tblList.delegate = self;
     self.tblList.dataSource = self;
-
-    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusRestricted ||
-        [CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied)
-    {
-        NSLog(@"Location services is unauthorized.");
-    } else {
-        self.locationManager = [[CLLocationManager alloc] init];
-        self.locationManager.delegate = self;
-
-        if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined)
-        {
-            [self.locationManager requestAlwaysAuthorization];
-        }
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
-        self.locationManager.distanceFilter = kCLDistanceFilterNone;
-        // [self.locationManager startUpdatingLocation];
-        [self.locationManager startMonitoringSignificantLocationChanges];
-        [self.locationManager startMonitoringVisits];
-    }
 }
 
-- (void)addTableItem:(GeoLoggerAnnotation *)tt
+- (void)didAddedAnnotaition:(GeoLoggerAnnotation *) item;
 {
-    NSMutableArray *geo_locations = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).geo_locations;
-
-    [self.mapView addAnnotation:tt];
+    [self.mapView addAnnotation:item];
     
     // 地図の移動&ズーム
     MKCoordinateSpan coordinateSpan = MKCoordinateSpanMake(0.0001, 0.0001);
-    MKCoordinateRegion newRegion = MKCoordinateRegionMake(tt.coordinate, coordinateSpan);
+    MKCoordinateRegion newRegion = MKCoordinateRegionMake(item.coordinate, coordinateSpan);
     [self.mapView setRegion:newRegion animated:YES];
 
-    // データの追加 / 保存
-    [geo_locations insertObject:tt atIndex:0];
-    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    [delegate save_geo_locations];
-    
     // table view の更新
+    /*
     [self.tblList beginUpdates];
     NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tblList insertRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:UITableViewRowAnimationTop];
     [self.tblList endUpdates];
+     */
     [self.tblList reloadData];
 }
 
-- (void)addLocation:(CLLocation *)location
-{
-    NSMutableArray *geo_locations = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).geo_locations;
-
-    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
-    [outputFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    
-    NSString *timestamp = [outputFormatter stringFromDate:location.timestamp];
-    NSString *accuracy = [NSString stringWithFormat:@"%0.0f", location.horizontalAccuracy];
-    NSString *message = [[NSString alloc] initWithFormat:@"%lu: %@ (精度:%@m)", (unsigned long)geo_locations.count+1, timestamp, accuracy];
-    
-    GeoLoggerAnnotation* tt = [[GeoLoggerAnnotation alloc] init];
-    tt.coordinate = location.coordinate;
-    tt.title = message;
-    tt.is_visit = FALSE;
-    tt.timestamp = location.timestamp;
-    tt.accuracy = location.horizontalAccuracy;
-    tt.arrival_date = nil;
-    tt.departure_date = nil;
-    
-    [self addTableItem:tt];
-}
-
-- (void)addVisit:(CLVisit *)visit
-{
-    NSMutableArray *geo_locations = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).geo_locations;
-
-    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
-    [outputFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    
-    NSString *timestamp = [outputFormatter stringFromDate:[NSDate date]];
-    NSString *accuracy = [NSString stringWithFormat:@"%0.0f", visit.horizontalAccuracy];
-    NSString *message = [[NSString alloc] initWithFormat:@"%lu: %@ (精度:%@m) visit", (unsigned long)geo_locations.count+1, timestamp, accuracy];
-    
-    GeoLoggerAnnotation* tt = [[GeoLoggerAnnotation alloc] init];
-    tt.coordinate = visit.coordinate;
-    tt.title = message;
-    tt.is_visit = FALSE;
-    tt.timestamp = [NSDate date];
-    tt.arrival_date = visit.arrivalDate;
-    tt.departure_date = visit.departureDate;
-    
-    [self addTableItem:tt];
-}
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
-{
-    for(CLLocation *loc in locations) {
-        [self addLocation: loc];
-    }
-}
-
-- (void)locationManager:(CLLocationManager *)manager didVisit:(CLVisit *)visit
-{
-    [self addVisit:visit];
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSMutableArray *geo_locations = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).geo_locations;
+    NSMutableArray *geo_locations = [[GeoLocationService sharedInstance] geo_locations];
     return geo_locations.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSMutableArray *geo_locations = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).geo_locations;
+    NSMutableArray *geo_locations = [[GeoLocationService sharedInstance] geo_locations];
     NSString *str = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
     // 再利用できるセルがあれば再利用する
     UITableViewCell *cell;// = [tableView dequeueReusableCellWithIdentifier:str];
@@ -150,7 +71,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSMutableArray *geo_locations = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).geo_locations;
+    NSMutableArray *geo_locations = [[GeoLocationService sharedInstance] geo_locations];
     
     GeoLoggerAnnotation* tt = geo_locations[indexPath.row];
     MKCoordinateSpan coordinateSpan = MKCoordinateSpanMake(0.00001, 0.00001); //数が小さいほど拡大率アップ
@@ -160,10 +81,7 @@
 }
 
 - (IBAction)btnResetTapped:(id)sender {
-    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    [delegate.geo_locations removeAllObjects];
-    [delegate save_geo_locations];
-
+    [[GeoLocationService sharedInstance] clear];
     [self.tblList reloadData];
 }
 

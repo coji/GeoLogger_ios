@@ -9,19 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import "GeoLoggerAnnotation.h"
+#import "GeoLocationService.h"
 
-@interface ViewController : UIViewController<MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource>
-
-@property (nonatomic) CLLocationManager *locationManager;
+@interface ViewController : UIViewController<MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource,GeoLocationServiceDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tblList;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIButton *btnReset;
-
-- (void)addTableItem:(GeoLoggerAnnotation *)tt;
-- (void)addLocation:(CLLocation*)location;
-- (void)addVisit:(CLVisit *)visit;
 
 @end
 

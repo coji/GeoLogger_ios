@@ -17,6 +17,7 @@
 		E358AB601B7C9F3C00A8BF77 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E358AB5F1B7C9F3C00A8BF77 /* CoreLocation.framework */; };
 		E358AB621B7C9F4400A8BF77 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E358AB611B7C9F4400A8BF77 /* MapKit.framework */; };
 		E35DBFAB1B7E3E9F00C6929C /* GeoLoggerAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E35DBFAA1B7E3E9F00C6929C /* GeoLoggerAnnotation.m */; };
+		E3B3370D1B806BB4001A537C /* GeoLocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B3370C1B806BB4001A537C /* GeoLocationService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,8 @@
 		E358AB611B7C9F4400A8BF77 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E35DBFA91B7E3E9F00C6929C /* GeoLoggerAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoLoggerAnnotation.h; sourceTree = "<group>"; };
 		E35DBFAA1B7E3E9F00C6929C /* GeoLoggerAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoLoggerAnnotation.m; sourceTree = "<group>"; };
+		E3B3370B1B806BB4001A537C /* GeoLocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoLocationService.h; sourceTree = "<group>"; };
+		E3B3370C1B806BB4001A537C /* GeoLocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoLocationService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +105,8 @@
 				E358AB391B7C9E7A00A8BF77 /* Supporting Files */,
 				E35DBFA91B7E3E9F00C6929C /* GeoLoggerAnnotation.h */,
 				E35DBFAA1B7E3E9F00C6929C /* GeoLoggerAnnotation.m */,
+				E3B3370B1B806BB4001A537C /* GeoLocationService.h */,
+				E3B3370C1B806BB4001A537C /* GeoLocationService.m */,
 			);
 			path = GeoLogger;
 			sourceTree = "<group>";
@@ -238,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E358AB421B7C9E7A00A8BF77 /* ViewController.m in Sources */,
+				E3B3370D1B806BB4001A537C /* GeoLocationService.m in Sources */,
 				E358AB3F1B7C9E7A00A8BF77 /* AppDelegate.m in Sources */,
 				E35DBFAB1B7E3E9F00C6929C /* GeoLoggerAnnotation.m in Sources */,
 				E358AB3C1B7C9E7A00A8BF77 /* main.m in Sources */,
