@@ -101,7 +101,7 @@ int update_count = 0;
     futureAlert.timeZone = [NSTimeZone defaultTimeZone];
     [[UIApplication sharedApplication] scheduleLocalNotification:futureAlert];
     
-    [self sendToServerWithLat:item.coordinate.latitude lng:item.coordinate.longitude accuracy:item.accuracy arrival_date:item.arrival_date departure_date:item.departure_date];
+    [self sendToServerWithAnnotation:item];
 }
 
 - (void)addVisit:(CLVisit *)visit
@@ -116,7 +116,7 @@ int update_count = 0;
     GeoLoggerAnnotation* item = [[GeoLoggerAnnotation alloc] init];
     item.coordinate = visit.coordinate;
     item.title = message;
-    item.is_visit = FALSE;
+    item.is_visit = TRUE;
     item.timestamp = [NSDate date];
     item.arrival_date = visit.arrivalDate;
     item.departure_date = visit.departureDate;
@@ -136,7 +136,7 @@ int update_count = 0;
     futureAlert.timeZone = [NSTimeZone defaultTimeZone];
     [[UIApplication sharedApplication] scheduleLocalNotification:futureAlert];
 
-    [self sendToServerWithLat:item.coordinate.latitude lng:item.coordinate.longitude accuracy:item.accuracy arrival_date:item.arrival_date departure_date:item.departure_date];
+    [self sendToServerWithAnnotation:item];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
@@ -145,10 +145,8 @@ int update_count = 0;
         for(CLLocation *loc in locations) {
             [self addLocation: loc];
         }
-
-        is_updating = true;
+        is_updating = false;
         update_count = 0;
-        [self.locationManager startUpdatingLocation];
     } else if (update_count >= 5) {
         is_updating = false;
         update_count = 0;
@@ -191,7 +189,7 @@ int update_count = 0;
     if(self.geo_locations == nil) {
         self.geo_locations = [[NSMutableArray alloc] init];
     }
-    
+
     if ([self.delegate respondsToSelector:@selector(didAddedAnnotaition:)])
     {
         for(GeoLoggerAnnotation* item in self.geo_locations) {
@@ -206,14 +204,24 @@ int update_count = 0;
     [self save];
 }
 
-- (void)sendToServerWithLat:(double)lat lng:(double)lng accuracy:(double)accuracy
-               arrival_date:(NSDate *)arrival_date departure_date:(NSDate *)departure_date
+- (void)sendToServerWithAnnotation:(GeoLoggerAnnotation*)item
 {
     NSString *url;
-    if(arrival_date && departure_date) {
-        url = [NSString stringWithFormat:SERVER_URL_VISIT, lat, lng, accuracy, arrival_date, departure_date];
+    if(item.is_visit) {
+        NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+        [outputFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+
+        url = [NSString stringWithFormat:SERVER_URL_VISIT,
+               item.coordinate.latitude,
+               item.coordinate.longitude,
+               item.accuracy,
+               [[outputFormatter stringFromDate:item.arrival_date] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+               [[outputFormatter stringFromDate:item.departure_date] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     } else {
-        url = [NSString stringWithFormat:SERVER_URL_LOCATION, lat, lng, accuracy];
+        url = [NSString stringWithFormat:SERVER_URL_LOCATION,
+               item.coordinate.latitude,
+               item.coordinate.longitude,
+               item.accuracy];
     }
     NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
 
