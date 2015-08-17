@@ -9,6 +9,8 @@
 #import "GeoLocationService.h"
 
 @implementation GeoLocationService
+bool is_updating = false;
+int update_count = 0;
 @synthesize delegate;
 
 #define SERVER_URL_LOCATION @"http://techtalk.jp/geo_api.cgi?lat=%f&lng=%f&accuracy=%f"
@@ -139,14 +141,37 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    for(CLLocation *loc in locations) {
-        [self addLocation: loc];
+    if(!is_updating) {
+        for(CLLocation *loc in locations) {
+            [self addLocation: loc];
+        }
+
+        is_updating = true;
+        update_count = 0;
+        [self.locationManager startUpdatingLocation];
+    } else if (update_count >= 5) {
+        is_updating = false;
+        update_count = 0;
+        [self.locationManager stopUpdatingLocation];
+    } else {
+        CLLocation *loc = locations.lastObject;
+        if(loc.horizontalAccuracy < 30) {
+            is_updating = false;
+            update_count = 0;
+            [self.locationManager stopUpdatingLocation];
+            [self addLocation: loc];
+        } else {
+            update_count++;
+        }
     }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didVisit:(CLVisit *)visit
 {
     [self addVisit:visit];
+    is_updating = true;
+    update_count = 0;
+    [self.locationManager startUpdatingLocation];
 }
 
 - (void)save
