@@ -166,6 +166,13 @@
     if(self.geo_locations == nil) {
         self.geo_locations = [[NSMutableArray alloc] init];
     }
+    
+    if ([self.delegate respondsToSelector:@selector(didAddedAnnotaition:)])
+    {
+        for(GeoLoggerAnnotation* item in self.geo_locations) {
+            [self.delegate didAddedAnnotaition:item];
+        }
+    }
 }
 
 - (void)clear
@@ -191,6 +198,4 @@
                            }];
 }
 
-
 @end
-

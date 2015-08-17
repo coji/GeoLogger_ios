@@ -29,7 +29,7 @@
     CLLocationCoordinate2D cd;
     cd.latitude = [coder decodeDoubleForKey:@"latitude"];
     cd.longitude = [coder decodeDoubleForKey:@"longitude"];
-    self.coordinate = cd;
+    [self setCoordinate:cd];
     self.title = [coder decodeObjectForKey:@"title"];
     self.timestamp = [coder decodeObjectForKey:@"timestamp"];
     self.is_visit = [coder decodeBoolForKey:@"is_visit"];

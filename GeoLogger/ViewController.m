@@ -20,7 +20,10 @@
 
     self.mapView.showsUserLocation = YES; //ユーザの位置を表示するかどうか
     GeoLocationService.sharedInstance.delegate = self;
-    
+    for(GeoLoggerAnnotation* item in GeoLocationService.sharedInstance.geo_locations) {
+        [self didAddedAnnotaition:item];
+    }
+
     // 位置情報リスト
     self.tblList.delegate = self;
     self.tblList.dataSource = self;
@@ -28,7 +31,6 @@
 
 - (void)didAddedAnnotaition:(GeoLoggerAnnotation *) item;
 {
-    
     // pin の追加
     [self.mapView addAnnotation:item];
     
@@ -72,6 +74,7 @@
     GeoLoggerAnnotation* tt = geo_locations[indexPath.row];
     MKCoordinateSpan coordinateSpan = MKCoordinateSpanMake(0.00001, 0.00001); //数が小さいほど拡大率アップ
 
+    
     MKCoordinateRegion newRegion = MKCoordinateRegionMake(tt.coordinate, coordinateSpan);
     [self.mapView setRegion:newRegion animated:YES];
 }

@@ -23,7 +23,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>常に位置情報を取得して techtalk.jp に送信します。よろしいですか。</string>
+	<string>調査のために位置情報をバックグラウンドで取得して techtalk.jp に送信します。</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>位置情報をとるよ？</string>
 	<key>UILaunchStoryboardName</key>
