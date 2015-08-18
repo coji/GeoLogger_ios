@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tblList;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIButton *btnReset;
+@property (weak, nonatomic) IBOutlet GADBannerView *bannerView;
 
 @end
 

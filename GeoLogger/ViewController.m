@@ -6,6 +6,7 @@
 //  Copyright (c) 2015年 Coji Mizoguchi. All rights reserved.
 //
 
+@import GoogleMobileAds;
 #import "AppDelegate.h"
 #import "ViewController.h"
 
@@ -17,6 +18,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    // AdMob banner
+    self.bannerView.adUnitID = @"ca-app-pub-2610590216983914/9954980181";
+    self.bannerView.rootViewController = self;
+    GADRequest* request = [GADRequest request];
+     [self.bannerView loadRequest:request];
 
     self.mapView.showsUserLocation = YES; //ユーザの位置を表示するかどうか
     GeoLocationService.sharedInstance.delegate = self;
@@ -38,6 +45,11 @@
     MKCoordinateSpan coordinateSpan = MKCoordinateSpanMake(0.0001, 0.0001);
     MKCoordinateRegion newRegion = MKCoordinateRegionMake(item.coordinate, coordinateSpan);
     [self.mapView setRegion:newRegion animated:YES];
+
+    // 広告の表示
+    GADRequest* request = [GADRequest request];
+    [request setLocationWithLatitude:item.coordinate.latitude longitude:item.coordinate.longitude accuracy:item.accuracy];
+    [self.bannerView loadRequest:request];
 
     // table view の更新
     [self.tblList reloadData];
