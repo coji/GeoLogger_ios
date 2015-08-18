@@ -91,13 +91,15 @@
     {
         [self.delegate didAddedAnnotaition:item];
     }
-    
+
+    /*
     UILocalNotification *futureAlert;
     futureAlert = [[UILocalNotification alloc] init];
     [futureAlert setAlertBody:message];
     futureAlert.fireDate = [NSDate dateWithTimeIntervalSinceNow:0];
     futureAlert.timeZone = [NSTimeZone defaultTimeZone];
     [[UIApplication sharedApplication] scheduleLocalNotification:futureAlert];
+    */
     
     [self sendToServerWithAnnotation:item];
 }
@@ -141,9 +143,7 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    for(CLLocation *loc in locations) {
-        [self addLocation: loc];
-    }
+    [self addLocation: locations.lastObject];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didVisit:(CLVisit *)visit

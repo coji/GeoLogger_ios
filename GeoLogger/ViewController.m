@@ -7,9 +7,9 @@
 //
 
 @import GoogleMobileAds;
-#import <AppDavis/ADVSInstreamAdLoader.h>
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import <AppDavis/ADVSInstreamAdLoader.h>
 
 @interface ViewController ()<ADVSInstreamAdLoaderDelegate>
 @property(nonatomic) ADVSInstreamAdLoader *instreamAdLoader;
@@ -41,7 +41,7 @@
     self.instreamAdLoader = [ADVSInstreamAdLoader new];
     self.instreamAdLoader.delegate = self;
     //(4) In-Feed広告を挿入したいtableViewと広告枠IDを設定
-    [self.instreamAdLoader bindToTableView:self.tblList adSpotId:@"NjIyOjQwMjg"];
+    [self.instreamAdLoader bindToTableView:self.tblList adSpotId:@"NTA1OjQwMzM"];
     //(5) In-Feed広告ロードを呼び出し
     [self.instreamAdLoader loadAd:3 positions:@[@5,@15,@25]];
 }
