@@ -6,6 +6,7 @@
 //  Copyright (c) 2015年 Coji Mizoguchi. All rights reserved.
 //
 
+#import <AppDavis/AppDavis.h>
 #import "AppDelegate.h"
 #import <CoreLocation/CoreLocation.h>
 #import "GeoLocationService.h"
@@ -18,8 +19,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     UIUserNotificationSettings *notificationSettings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert|UIUserNotificationTypeSound) categories:nil];
-    [[UIApplication sharedApplication]registerUserNotificationSettings:notificationSettings];
     
+    [[UIApplication sharedApplication]registerUserNotificationSettings:notificationSettings];
+    [AppDavis initMedia:@"1384"];
+
     //if ([launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]) {
         [GeoLocationService.sharedInstance startService];
     //}

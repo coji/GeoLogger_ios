@@ -11,7 +11,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "GeoLocationService.h"
 
-@interface ViewController : UIViewController<MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource,GeoLocationServiceDelegate>
+@interface ViewController : UIViewController<MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource, GeoLocationServiceDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tblList;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;

@@ -7,11 +7,12 @@
 //
 
 @import GoogleMobileAds;
+#import <AppDavis/ADVSInstreamAdLoader.h>
 #import "AppDelegate.h"
 #import "ViewController.h"
 
-@interface ViewController ()
-
+@interface ViewController ()<ADVSInstreamAdLoaderDelegate>
+@property(nonatomic) ADVSInstreamAdLoader *instreamAdLoader;
 @end
 
 @implementation ViewController
@@ -34,6 +35,15 @@
     // 位置情報リスト
     self.tblList.delegate = self;
     self.tblList.dataSource = self;
+    self.tblList.rowHeight = UITableViewAutomaticDimension;
+
+    //(3) Hike をインスタンス化。delegate を設定
+    self.instreamAdLoader = [ADVSInstreamAdLoader new];
+    self.instreamAdLoader.delegate = self;
+    //(4) In-Feed広告を挿入したいtableViewと広告枠IDを設定
+    [self.instreamAdLoader bindToTableView:self.tblList adSpotId:@"NjIyOjQwMjg"];
+    //(5) In-Feed広告ロードを呼び出し
+    [self.instreamAdLoader loadAd:3 positions:@[@5,@15,@25]];
 }
 
 - (void)didAddedAnnotaition:(GeoLoggerAnnotation *) item;
@@ -55,6 +65,10 @@
     [self.tblList reloadData];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
+{
+    return UITableViewAutomaticDimension;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -67,7 +81,7 @@
     NSMutableArray *geo_locations = [[GeoLocationService sharedInstance] geo_locations];
     NSString *str = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
     // 再利用できるセルがあれば再利用する
-    UITableViewCell *cell;// = [tableView dequeueReusableCellWithIdentifier:str];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:str];
     
     if (!cell) {
         // 再利用できない場合は新規で作成
@@ -96,5 +110,6 @@
     [[GeoLocationService sharedInstance] clear];
     [self.tblList reloadData];
 }
+
 
 @end
