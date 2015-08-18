@@ -118,6 +118,7 @@ int update_count = 0;
     item.title = message;
     item.is_visit = TRUE;
     item.timestamp = [NSDate date];
+    item.accuracy = visit.horizontalAccuracy;
     item.arrival_date = visit.arrivalDate;
     item.departure_date = visit.departureDate;
 
