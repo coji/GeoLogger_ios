@@ -53,7 +53,6 @@
         self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
         self.locationManager.distanceFilter = kCLDistanceFilterNone;
 
-        //[self.locationManager startUpdatingLocation];
         [self.locationManager startMonitoringSignificantLocationChanges];
         [self.locationManager startMonitoringVisits];
     }
@@ -61,7 +60,6 @@
 
 - (void)stopService
 {
-    //[self.locationManager stopUpdatingLocation];
     [self.locationManager stopMonitoringSignificantLocationChanges];
     [self.locationManager stopMonitoringVisits];
 }
@@ -149,7 +147,6 @@
 - (void)locationManager:(CLLocationManager *)manager didVisit:(CLVisit *)visit
 {
     [self addVisit:visit];
-    [self.locationManager startUpdatingLocation];
 }
 
 - (void)save
