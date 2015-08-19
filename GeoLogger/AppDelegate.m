@@ -8,6 +8,8 @@
 
 #import <AppDavis/AppDavis.h>
 #import "AppDelegate.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 #import <CoreLocation/CoreLocation.h>
 #import "GeoLocationService.h"
 
@@ -19,7 +21,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     UIUserNotificationSettings *notificationSettings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert|UIUserNotificationTypeSound) categories:nil];
-    
+
+    [Fabric with:@[CrashlyticsKit]];
     [[UIApplication sharedApplication]registerUserNotificationSettings:notificationSettings];
     [AppDavis initMedia:@"1384"];
 
