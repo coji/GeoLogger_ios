@@ -17,7 +17,6 @@
 		E34B6DD71B8231930068B4A8 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E34B6DD61B8231930068B4A8 /* EventKit.framework */; };
 		E34B6DD91B82319A0068B4A8 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E34B6DD81B82319A0068B4A8 /* EventKitUI.framework */; };
 		E34B6DDB1B8231A10068B4A8 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E34B6DDA1B8231A10068B4A8 /* MessageUI.framework */; };
-		E34B6DDD1B8231A70068B4A8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E34B6DDC1B8231A70068B4A8 /* StoreKit.framework */; };
 		E34B6DDF1B8231AD0068B4A8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E34B6DDE1B8231AD0068B4A8 /* SystemConfiguration.framework */; };
 		E358AB3C1B7C9E7A00A8BF77 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E358AB3B1B7C9E7A00A8BF77 /* main.m */; };
 		E358AB3F1B7C9E7A00A8BF77 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E358AB3E1B7C9E7A00A8BF77 /* AppDelegate.m */; };
@@ -29,6 +28,10 @@
 		E358AB601B7C9F3C00A8BF77 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E358AB5F1B7C9F3C00A8BF77 /* CoreLocation.framework */; };
 		E358AB621B7C9F4400A8BF77 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E358AB611B7C9F4400A8BF77 /* MapKit.framework */; };
 		E35DBFAB1B7E3E9F00C6929C /* GeoLoggerAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E35DBFAA1B7E3E9F00C6929C /* GeoLoggerAnnotation.m */; };
+		E3A74B181B85B73B0097C9BA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3A74B171B85B73B0097C9BA /* StoreKit.framework */; };
+		E3A74B1B1B85BCF80097C9BA /* FreakOutMobileAppBeacon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3A74B191B85BCF80097C9BA /* FreakOutMobileAppBeacon.framework */; };
+		E3A74B1C1B85BCF80097C9BA /* FreakOutMobileAppDMP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3A74B1A1B85BCF80097C9BA /* FreakOutMobileAppDMP.framework */; };
+		E3A74B201B85BE250097C9BA /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E3A74B1F1B85BE250097C9BA /* libsqlite3.0.dylib */; };
 		E3B3370D1B806BB4001A537C /* GeoLocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B3370C1B806BB4001A537C /* GeoLocationService.m */; };
 /* End PBXBuildFile section */
 
@@ -55,7 +58,6 @@
 		E34B6DD61B8231930068B4A8 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		E34B6DD81B82319A0068B4A8 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
 		E34B6DDA1B8231A10068B4A8 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		E34B6DDC1B8231A70068B4A8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		E34B6DDE1B8231AD0068B4A8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E358AB361B7C9E7A00A8BF77 /* GeoLogger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoLogger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E358AB3A1B7C9E7A00A8BF77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -74,6 +76,10 @@
 		E358AB611B7C9F4400A8BF77 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E35DBFA91B7E3E9F00C6929C /* GeoLoggerAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoLoggerAnnotation.h; sourceTree = "<group>"; };
 		E35DBFAA1B7E3E9F00C6929C /* GeoLoggerAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoLoggerAnnotation.m; sourceTree = "<group>"; };
+		E3A74B171B85B73B0097C9BA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		E3A74B191B85BCF80097C9BA /* FreakOutMobileAppBeacon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FreakOutMobileAppBeacon.framework; sourceTree = "<group>"; };
+		E3A74B1A1B85BCF80097C9BA /* FreakOutMobileAppDMP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FreakOutMobileAppDMP.framework; sourceTree = "<group>"; };
+		E3A74B1F1B85BE250097C9BA /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		E3B3370B1B806BB4001A537C /* GeoLocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoLocationService.h; sourceTree = "<group>"; };
 		E3B3370C1B806BB4001A537C /* GeoLocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoLocationService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,11 +89,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3A74B201B85BE250097C9BA /* libsqlite3.0.dylib in Frameworks */,
 				E34B6DDF1B8231AD0068B4A8 /* SystemConfiguration.framework in Frameworks */,
-				E34B6DDD1B8231A70068B4A8 /* StoreKit.framework in Frameworks */,
+				E3A74B181B85B73B0097C9BA /* StoreKit.framework in Frameworks */,
 				E34B6DDB1B8231A10068B4A8 /* MessageUI.framework in Frameworks */,
 				E34B6DD91B82319A0068B4A8 /* EventKitUI.framework in Frameworks */,
 				E34B6DD71B8231930068B4A8 /* EventKit.framework in Frameworks */,
+				E3A74B1C1B85BCF80097C9BA /* FreakOutMobileAppDMP.framework in Frameworks */,
 				E34B6DD51B82318E0068B4A8 /* CoreTelephony.framework in Frameworks */,
 				E34B6DD31B8231880068B4A8 /* CoreMedia.framework in Frameworks */,
 				E34B6DD11B8231810068B4A8 /* CoreGraphics.framework in Frameworks */,
@@ -95,6 +103,7 @@
 				E34B6DCD1B8231710068B4A8 /* AudioToolbox.framework in Frameworks */,
 				E34B6DCB1B8231670068B4A8 /* AdSupport.framework in Frameworks */,
 				E358AB621B7C9F4400A8BF77 /* MapKit.framework in Frameworks */,
+				E3A74B1B1B85BCF80097C9BA /* FreakOutMobileAppBeacon.framework in Frameworks */,
 				E358AB601B7C9F3C00A8BF77 /* CoreLocation.framework in Frameworks */,
 				B1B602A78ADB32C978480353 /* libPods.a in Frameworks */,
 			);
@@ -113,8 +122,11 @@
 		61BF368F828BF5A73EA3CECB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E3A74B1F1B85BE250097C9BA /* libsqlite3.0.dylib */,
+				E3A74B191B85BCF80097C9BA /* FreakOutMobileAppBeacon.framework */,
+				E3A74B1A1B85BCF80097C9BA /* FreakOutMobileAppDMP.framework */,
+				E3A74B171B85B73B0097C9BA /* StoreKit.framework */,
 				E34B6DDE1B8231AD0068B4A8 /* SystemConfiguration.framework */,
-				E34B6DDC1B8231A70068B4A8 /* StoreKit.framework */,
 				E34B6DDA1B8231A10068B4A8 /* MessageUI.framework */,
 				E34B6DD81B82319A0068B4A8 /* EventKitUI.framework */,
 				E34B6DD61B8231930068B4A8 /* EventKit.framework */,
@@ -260,7 +272,10 @@
 						DevelopmentTeam = BW3D5X9E68;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
-								enabled = 0;
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
 							};
 						};
 					};
@@ -496,6 +511,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = GeoLogger/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -511,6 +530,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = GeoLogger/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

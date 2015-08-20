@@ -6,6 +6,8 @@
 //  Copyright (c) 2015年 Coji Mizoguchi. All rights reserved.
 //
 
+#import <FreakOutMobileAppDMP/FOTracking.h>
+#import <FreakOutMobileAppBeacon/FOBeaconTracking.h>
 #import <AppDavis/AppDavis.h>
 #import "AppDelegate.h"
 #import <Fabric/Fabric.h>
@@ -22,6 +24,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     UIUserNotificationSettings *notificationSettings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert|UIUserNotificationTypeSound) categories:nil];
 
+    [[FOTracking sharedInstance] initialize:@"128" advertiserID:@"1075"];
+    [[FOBeaconTracking sharedInstance] start];
+    [[FOTracking sharedInstance] setDebug:YES];
+    [[FOTracking sharedInstance] tracking:@{@"event": @"launch"}];
+    
     [Fabric with:@[CrashlyticsKit]];
     [[UIApplication sharedApplication]registerUserNotificationSettings:notificationSettings];
     [AppDavis initMedia:@"1384"];

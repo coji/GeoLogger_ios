@@ -14,10 +14,12 @@
 
 @property (readwrite, nonatomic) CLLocationCoordinate2D coordinate;
 @property (readwrite, nonatomic, copy) NSString* title;
+@property (readwrite, nonatomic, copy) NSString* subtitle;
 @property (readwrite, nonatomic, strong) NSDate* timestamp;
 @property (readwrite, nonatomic) double accuracy;
 @property (readwrite, nonatomic) BOOL is_visit;
 @property (readwrite, nonatomic, strong) NSDate* arrival_date;
 @property (readwrite, nonatomic, strong) NSDate* departure_date;
+@property (readwrite, nonatomic) NSString* place;
 
 @end

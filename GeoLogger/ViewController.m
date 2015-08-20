@@ -44,21 +44,29 @@
     [self.instreamAdLoader bindToTableView:self.tblList adSpotId:@"NTA1OjQwMzM"];
     //(5) In-Feed広告ロードを呼び出し
     [self.instreamAdLoader loadAd:3 positions:@[@5,@15,@25]];
+    [self.tblList reloadData];
 }
 
 - (void)didAddedAnnotaition:(GeoLoggerAnnotation *) item;
 {
+    CLLocationCoordinate2D centerCoordinate = item.coordinate;
+    CLLocationCoordinate2D fromEyeCoordinate = CLLocationCoordinate2DMake(item.coordinate.latitude-0.001,
+                                                                          item.coordinate.longitude);
+    CLLocationDistance eyeAltitude = 400.0; // meter
+    MKMapCamera *camera = [MKMapCamera cameraLookingAtCenterCoordinate:centerCoordinate
+                                                     fromEyeCoordinate:fromEyeCoordinate
+                                                           eyeAltitude:eyeAltitude];
+    [self.mapView setCamera:camera animated:NO];
+
     // pin の追加
     [self.mapView addAnnotation:item];
     
-    // 地図の移動&ズーム
-    MKCoordinateSpan coordinateSpan = MKCoordinateSpanMake(0.0001, 0.0001);
-    MKCoordinateRegion newRegion = MKCoordinateRegionMake(item.coordinate, coordinateSpan);
-    [self.mapView setRegion:newRegion animated:YES];
 
     // 広告の表示
     GADRequest* request = [GADRequest request];
-    [request setLocationWithLatitude:item.coordinate.latitude longitude:item.coordinate.longitude accuracy:item.accuracy];
+    [request setLocationWithLatitude:item.coordinate.latitude
+                           longitude:item.coordinate.longitude
+                            accuracy:item.accuracy];
     [self.bannerView loadRequest:request];
 
     // table view の更新
@@ -83,13 +91,15 @@
     // 再利用できるセルがあれば再利用する
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:str];
     
-    if (!cell) {
+//    if (!cell) {
         // 再利用できない場合は新規で作成
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                       reuseIdentifier:str];
+        
         GeoLoggerAnnotation* tt = geo_locations[indexPath.row];
-        cell.textLabel.text = tt.title;
-    }
+        cell.textLabel.text = [NSString stringWithFormat:@"%lu: %@", geo_locations.count - (long)indexPath.row, tt.title];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", tt.place];
+//    }
     
     return cell;
 }
@@ -97,12 +107,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSMutableArray *geo_locations = [[GeoLocationService sharedInstance] geo_locations];
     
-    GeoLoggerAnnotation* tt = geo_locations[indexPath.row];
-    MKCoordinateSpan coordinateSpan = MKCoordinateSpanMake(0.00001, 0.00001); //数が小さいほど拡大率アップ
-
-    
-    MKCoordinateRegion newRegion = MKCoordinateRegionMake(tt.coordinate, coordinateSpan);
-    [self.mapView setRegion:newRegion animated:YES];
+    GeoLoggerAnnotation* item = geo_locations[indexPath.row];
+    CLLocationCoordinate2D centerCoordinate = item.coordinate;
+    CLLocationCoordinate2D fromEyeCoordinate = CLLocationCoordinate2DMake(item.coordinate.latitude-0.001,
+                                                                          item.coordinate.longitude);
+    CLLocationDistance eyeAltitude = 400.0; // meter
+    MKMapCamera *camera = [MKMapCamera cameraLookingAtCenterCoordinate:centerCoordinate
+                                                     fromEyeCoordinate:fromEyeCoordinate
+                                                           eyeAltitude:eyeAltitude];
+    [self.mapView setCamera:camera animated:YES];
 }
 
 - (IBAction)btnResetTapped:(id)sender {

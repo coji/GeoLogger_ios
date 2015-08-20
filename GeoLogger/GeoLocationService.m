@@ -71,7 +71,7 @@
     
     NSString *timestamp = [outputFormatter stringFromDate:location.timestamp];
     NSString *accuracy = [NSString stringWithFormat:@"%0.0f", location.horizontalAccuracy];
-    NSString *message = [[NSString alloc] initWithFormat:@"%lu: %@ (精度:%@m)", (unsigned long)self.geo_locations.count+1, timestamp, accuracy];
+    NSString *message = [[NSString alloc] initWithFormat:@"%@ (精度:%@m)", timestamp, accuracy];
     
     GeoLoggerAnnotation* item = [[GeoLoggerAnnotation alloc] init];
     item.coordinate = location.coordinate;
@@ -81,6 +81,21 @@
     item.accuracy = location.horizontalAccuracy;
     item.arrival_date = nil;
     item.departure_date = nil;
+
+    if(item.place == nil) {
+        CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+        CLLocation *location = [[CLLocation alloc] initWithLatitude:item.coordinate.latitude
+                                                          longitude:item.coordinate.longitude];
+        [geocoder reverseGeocodeLocation:location
+                       completionHandler:^(NSArray* placemarks, NSError* error) {
+                           CLPlacemark* placemark = [placemarks lastObject];
+                           item.place = [@[placemark.postalCode ? placemark.postalCode : @"",
+                                           placemark.locality ? placemark.locality : @"",
+                                           placemark.thoroughfare ? placemark.thoroughfare : @"",
+                                           placemark.subThoroughfare ? placemark.subThoroughfare : @""] componentsJoinedByString:@" "];
+                           item.subtitle = item.place;
+                       }];
+    }
 
     [self.geo_locations insertObject:item atIndex:0];
     [self save];
@@ -109,7 +124,7 @@
     
     NSString *timestamp = [outputFormatter stringFromDate:[NSDate date]];
     NSString *accuracy = [NSString stringWithFormat:@"%0.0f", visit.horizontalAccuracy];
-    NSString *message = [[NSString alloc] initWithFormat:@"%lu: %@ (精度:%@m) visit", (unsigned long)self.geo_locations.count+1, timestamp, accuracy];
+    NSString *message = [[NSString alloc] initWithFormat:@"%@ (精度:%@m) visit", timestamp, accuracy];
     
     GeoLoggerAnnotation* item = [[GeoLoggerAnnotation alloc] init];
     item.coordinate = visit.coordinate;
@@ -119,8 +134,22 @@
     item.accuracy = visit.horizontalAccuracy;
     item.arrival_date = visit.arrivalDate;
     item.departure_date = visit.departureDate;
-
     
+    if(item.place == nil) {
+        CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+        CLLocation *location = [[CLLocation alloc] initWithLatitude:item.coordinate.latitude
+                                                          longitude:item.coordinate.longitude];
+        [geocoder reverseGeocodeLocation:location
+                       completionHandler:^(NSArray* placemarks, NSError* error) {
+                           CLPlacemark* placemark = [placemarks lastObject];
+                           item.place = [@[placemark.postalCode ? placemark.postalCode : @"",
+                                           placemark.locality ? placemark.locality : @"",
+                                           placemark.thoroughfare ? placemark.thoroughfare : @"",
+                                           placemark.subThoroughfare ? placemark.subThoroughfare : @""] componentsJoinedByString:@" "];
+                           item.subtitle = item.place;
+                       }];
+    }
+
     [self.geo_locations insertObject:item atIndex:0];
     [self save];
 
@@ -167,9 +196,23 @@
         self.geo_locations = [[NSMutableArray alloc] init];
     }
 
-    if ([self.delegate respondsToSelector:@selector(didAddedAnnotaition:)])
-    {
-        for(GeoLoggerAnnotation* item in self.geo_locations) {
+    for(GeoLoggerAnnotation* item in self.geo_locations) {
+        if(item.place == nil) {
+            CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+            CLLocation *location = [[CLLocation alloc] initWithLatitude:item.coordinate.latitude
+                                                              longitude:item.coordinate.longitude];
+            [geocoder reverseGeocodeLocation:location
+                            completionHandler:^(NSArray* placemarks, NSError* error) {
+                                CLPlacemark* placemark = [placemarks lastObject];
+                                item.place = [@[placemark.postalCode ? placemark.postalCode : @"",
+                                                placemark.locality ? placemark.locality : @"",
+                                                placemark.thoroughfare ? placemark.thoroughfare : @"",
+                                                placemark.subThoroughfare ? placemark.subThoroughfare : @""] componentsJoinedByString:@" "];
+                                item.subtitle = item.place;
+            }];
+        }
+
+        if ([self.delegate respondsToSelector:@selector(didAddedAnnotaition:)]) {
             [self.delegate didAddedAnnotaition:item];
         }
     }
